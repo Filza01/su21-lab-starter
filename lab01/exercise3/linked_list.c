@@ -1,3 +1,4 @@
+// Copyright [2023] <Filza Shahid>
 #include <stdio.h>
 #include <stdlib.h>
 #include "linked_list.h"
@@ -38,9 +39,11 @@ void add_to_front(struct Node **head, int data) {
         /* The new node's next should point to the head */
         new_node->next = *head;
     }
-    /* We must set HEAD using the following line in order to change the original list */
+    /* We must set HEAD using the following line 
+    in order to change the original list */
     *head = new_node;
-    /* The following line would not work because it would only change our local copy of HEAD */
+    /* The following line would not work because 
+    it would only change our local copy of HEAD */
     /* head = new_node */
 }
 
@@ -55,7 +58,7 @@ void print_list(struct Node *head) {
 
 /* Iteratively reverses a linked list whose first node is HEAD */
 void reverse_list(struct Node **head) {
-    if (head == NULL) {
+    if (head == NULL || *head == NULL) {
         return;
     }
     struct Node *curr = *head;
@@ -76,10 +79,19 @@ void add_to_back(Node **head, int data) {
     if (head == NULL) {
         return;
     }
+
     Node *new_node = create_node(data);
+
+    if (*head == NULL) {
+        *head = new_node;
+        return;
+    }
+
     Node *prev;
+
     for (Node *curr = *head; curr != NULL; curr = curr->next) {
         prev = curr;
     }
+
     prev->next = new_node;
 }
