@@ -31,6 +31,6 @@ test_vector.o: test_vector.c vector.h
 	$(CC) $(CFLAGS) -c test_vector.c
 
 clean:
-	rm linked_list linked_list.o test_linked_list.o
-	rm bit_ops bit_ops.o test_bit_ops.o
-	rm vector vector.o test_vector.o
+	rm -rf core *.o
+	ls | grep -v "\.\|Makefile" | xargs rm
+	
