@@ -1,3 +1,4 @@
+// Copyright [2023] <Filza Shahid>
 #include <string.h>
 #include <assert.h>
 #include "pwd_checker.h"
@@ -32,7 +33,8 @@ bool check_range(char letter, char lower, char upper) {
     return is_in_range;
 }
 
-/* Returns true if PASSWORD contains at least one upper case letter, false otherwise */
+/* Returns true if PASSWORD contains at 
+least one upper case letter, false otherwise */
 bool check_upper(const char *password) {
     while (*password != '\0') {
         bool is_in_range = check_range(*password, 'A', 'Z');
@@ -44,7 +46,8 @@ bool check_upper(const char *password) {
     return false;
 }
 
-/* Returns true if PASSWORD contains at least one lower case letter, false otherwise */
+/* Returns true if PASSWORD contains at least 
+one lower case letter, false otherwise */
 bool check_lower(const char *password) {
     while (*password != '\0') {
         bool is_in_range = check_range(*password, 'a', 'z');
@@ -67,8 +70,10 @@ bool check_number(const char *password) {
     return false;
 }
 
-/* Returns true if the person's first and last name are NOT in the password, false otherwise */
-bool check_name(const char *first_name, const char *last_name, const char *password) {
+/* Returns true if the person's first and last name
+are NOT in the password, false otherwise */
+bool check_name(const char *first_name,
+const char *last_name, const char *password) {
     /* Type "man strstr" in your terminal to learn what strstr does!
         To exit the man pages, press 'q' */
     /* Hint: a NULL pointer will evaluate to False in a logical statement while a non-NULL pointer
@@ -78,8 +83,10 @@ bool check_name(const char *first_name, const char *last_name, const char *passw
     return (!first && !last);
 }
 
-/* Returns true if PASSWORD meets the conditions specified above */
-bool check_password(const char *first_name, const char *last_name, const char *password) {
+/* Returns true if PASSWORD meets the 
+conditions specified above */
+bool check_password(const char *first_name,
+const char *last_name, const char *password) {
     bool length, upper, lower, number, name;
     lower = check_lower(password);
     length = check_length(password);
