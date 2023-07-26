@@ -136,6 +136,7 @@ void vector_set(vector_t *v, size_t loc, int value) {
             v->data[i] = 0;
         }
         v->data[loc] = value;
+    }
 
         // int *temp = calloc(sizeof(int)* (loc+1));
         // if (temp == NULL) {
@@ -151,5 +152,5 @@ void vector_set(vector_t *v, size_t loc, int value) {
         // v->data = temp;
         // v-> size = loc+1;
         // v->data[loc] = value;
-    }
+    // }
 }
