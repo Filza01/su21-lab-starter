@@ -16,7 +16,7 @@
 #We have provided five versions of accumulator. Only one is correct, though all five pass the sanity test above.
 
 accumulatorone:
-	lw s0 0(a0)
+	lw s0 0(a0)        # not saved before using
 	beq s0 x0 Endone
 	addi sp sp -8
 	sw s0 0(sp)
@@ -33,7 +33,7 @@ Endone:
 	jr ra
 
 accumulatortwo:
-	addi sp sp 4
+	addi sp sp 4  #decrement by 4
 	sw s0 0(sp)
 	li t0 0
 	li s0 0
@@ -48,11 +48,11 @@ Looptwo:
 Endtwo:
 	mv a0 s0
 	lw s0 0(sp)
-	addi sp sp -4
+	addi sp sp -4  #increment by 4
 	jr ra
 
-accumulatorthree:
-	addi sp sp -8
+accumulatorthree:  # correct
+	addi sp sp -8   
 	sw s0 0(sp)
 	sw ra 4(sp)
 	lw s0 0(a0)
@@ -73,7 +73,7 @@ Epiloguethree:
 accumulatorfour:
 	lw t1 0(a0)
 	beq t1 x0 Endfour
-	add t2 t2 t1
+	add t2 t2 t1      # t2 not initialized
 	addi a0 a0 4
 	j accumulatorfour
 Endfour:
@@ -90,7 +90,7 @@ Loopfive:
 	addi s0 s0 4
 	lw t0 0(s0)
 	add a0 a0 t0
-	bne t0 x0 Loopfive
+	bne t0 x0 Loopfive # not checking at the zeroth index, condition should be checked first
 	lw s0 0(sp)
 	lw ra 4(sp)
 	addi sp sp 8
